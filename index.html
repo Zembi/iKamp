@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>IoannaKamp - Handmade Knitted Bags</title>
+   <link rel="icon" type="image/png" href="../assets/ioanna_kamp_image_removed_bg.png">
+   <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background-color: #000;
+         color: #fff;
+         min-height: 100vh;
+      }
+
+      /* Header */
+      .header {
+         position: sticky;
+         top: 0;
+         background-color: #000;
+         border-bottom: 1px solid #262626;
+         padding: 16px 20px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         z-index: 100;
+      }
+
+      .brand-info {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+      }
+
+      .brand-logo {
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-weight: bold;
+         font-size: 20px;
+      }
+
+      .brand-name h1 {
+         font-size: 20px;
+         font-weight: 600;
+         letter-spacing: 0.5px;
+      }
+
+      .brand-name p {
+         font-size: 12px;
+         color: #a8a8a8;
+      }
+
+      .follow-btn {
+         background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+         color: #fff;
+         border: none;
+         padding: 8px 20px;
+         border-radius: 8px;
+         font-weight: 600;
+         font-size: 14px;
+         cursor: pointer;
+         display: flex;
+         text-decoration: none;
+         align-items: center;
+         gap: 6px;
+      }
+
+      /* Bio Section */
+      .bio-section {
+         padding: 24px 20px;
+         border-bottom: 1px solid #262626;
+      }
+
+      .bio-section h2 {
+         font-size: 16px;
+         font-weight: 400;
+         line-height: 24px;
+      }
+
+      /* Contact Section */
+      .contact-section {
+         padding: 20px;
+         background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+         border-bottom: 1px solid #262626;
+      }
+
+      .contact-info {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 24px;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .contact-item {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         font-size: 15px;
+         color: #fff;
+      }
+
+      .contact-item i {
+         color: #f09433;
+         font-size: 18px;
+      }
+
+      .contact-item a {
+         color: #fff;
+         text-decoration: none;
+         transition: color 0.3s;
+      }
+
+      .contact-item a:hover {
+         color: #f09433;
+      }
+
+      /* Products Grid */
+      .products-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 3px;
+      }
+
+      .product-card {
+         position: relative;
+         aspect-ratio: 1/1;
+         overflow: hidden;
+         cursor: pointer;
+         background-color: #1a1a1a;
+      }
+
+      .product-card img,
+      .product-card video {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: transform 0.3s ease;
+      }
+
+      .product-card:hover img,
+      .product-card:hover video {
+         transform: scale(1.05);
+      }
+
+      .product-overlay {
+         position: absolute;
+         inset: 0;
+         background-color: rgba(0, 0, 0, 0.4);
+         opacity: 0;
+         transition: opacity 0.3s ease;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+      }
+
+      .product-card:hover .product-overlay {
+         opacity: 1;
+      }
+
+      .overlay-actions {
+         display: flex;
+         gap: 20px;
+         align-items: center;
+      }
+
+      .like-btn {
+         background: none;
+         border: none;
+         cursor: pointer;
+         padding: 0;
+         font-size: 32px;
+         transition: transform 0.2s;
+      }
+
+      .like-btn:hover {
+         transform: scale(1.1);
+      }
+
+      .like-btn.liked {
+         color: #ff3040;
+      }
+
+      .like-btn:not(.liked) {
+         color: #fff;
+      }
+
+      .send-icon {
+         font-size: 32px;
+         color: #fff;
+         cursor: pointer;
+         transition: transform 0.2s;
+      }
+
+      .send-icon:hover {
+         transform: scale(1.1);
+      }
+
+      .product-color {
+         font-size: 14px;
+         font-weight: 600;
+         margin-top: 8px;
+      }
+
+      .size-badges {
+         display: flex;
+         gap: 8px;
+         flex-wrap: wrap;
+         justify-content: center;
+      }
+
+      .size-badge {
+         padding: 4px 12px;
+         background-color: rgba(255, 255, 255, 0.2);
+         border-radius: 12px;
+         font-size: 12px;
+         font-weight: 500;
+         backdrop-filter: blur(10px);
+      }
+
+      .video-badge {
+         position: absolute;
+         top: 8px;
+         right: 8px;
+         background-color: rgba(0, 0, 0, 0.7);
+         padding: 4px 8px;
+         border-radius: 4px;
+         font-size: 11px;
+         font-weight: 600;
+         backdrop-filter: blur(10px);
+      }
+
+      /* Modal */
+      .modal-overlay {
+         position: fixed;
+         inset: 0;
+         background-color: rgba(0, 0, 0, 0.95);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 1000;
+         padding: 20px;
+         animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+         from {
+            opacity: 0;
+         }
+
+         to {
+            opacity: 1;
+         }
+      }
+
+      .modal-content {
+         position: relative;
+         max-width: 900px;
+         width: 100%;
+         background: #000;
+         border-radius: 12px;
+         overflow: hidden;
+         border: 1px solid #262626;
+         animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+         from {
+            transform: translateY(50px);
+            opacity: 0;
+         }
+
+         to {
+            transform: translateY(0);
+            opacity: 1;
+         }
+      }
+
+      .modal-close {
+         position: absolute;
+         top: 16px;
+         right: 16px;
+         background: rgba(0, 0, 0, 0.7);
+         border: none;
+         color: #fff;
+         font-size: 24px;
+         cursor: pointer;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 10;
+         backdrop-filter: blur(10px);
+         transition: background 0.3s;
+      }
+
+      .modal-close:hover {
+         background: rgba(255, 255, 255, 0.2);
+      }
+
+      .modal-media {
+         width: 100%;
+         max-height: 70vh;
+         object-fit: contain;
+         background: #000;
+      }
+
+      .modal-info {
+         padding: 24px;
+         border-top: 1px solid #262626;
+      }
+
+      .modal-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: flex-start;
+         margin-bottom: 16px;
+      }
+
+      .modal-title {
+         font-size: 20px;
+         font-weight: 600;
+         color: #fff;
+         margin-bottom: 8px;
+      }
+
+      .modal-color {
+         font-size: 16px;
+         color: #a8a8a8;
+      }
+
+      .modal-actions {
+         display: flex;
+         gap: 12px;
+      }
+
+      .modal-action-btn {
+         background: none;
+         border: none;
+         color: #fff;
+         font-size: 24px;
+         cursor: pointer;
+         transition: transform 0.2s;
+      }
+
+      .modal-action-btn:hover {
+         transform: scale(1.1);
+      }
+
+      .modal-sizes {
+         display: flex;
+         gap: 12px;
+         margin-top: 16px;
+      }
+
+      .modal-size-badge {
+         padding: 8px 16px;
+         background-color: rgba(255, 255, 255, 0.1);
+         border-radius: 16px;
+         font-size: 14px;
+         font-weight: 500;
+         border: 1px solid #262626;
+      }
+
+      /* Share Modal */
+      .share-modal {
+         position: fixed;
+         inset: 0;
+         background-color: rgba(0, 0, 0, 0.9);
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 2000;
+         padding: 20px;
+         animation: fadeIn 0.3s ease;
+      }
+
+      .share-content {
+         background: #1a1a1a;
+         border-radius: 16px;
+         padding: 32px;
+         max-width: 500px;
+         width: 100%;
+         border: 1px solid #262626;
+         animation: slideUp 0.3s ease;
+      }
+
+      .share-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 24px;
+      }
+
+      .share-title {
+         font-size: 20px;
+         font-weight: 600;
+      }
+
+      .share-close {
+         background: none;
+         border: none;
+         color: #fff;
+         font-size: 24px;
+         cursor: pointer;
+      }
+
+      .share-message {
+         background: #262626;
+         border-radius: 12px;
+         padding: 16px;
+         margin-bottom: 24px;
+         font-size: 14px;
+         line-height: 1.6;
+         border: 1px solid #333;
+         white-space: pre-wrap;
+      }
+
+      .share-buttons {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 12px;
+      }
+
+      .share-btn {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 10px;
+         padding: 14px;
+         border-radius: 10px;
+         border: none;
+         font-size: 15px;
+         font-weight: 600;
+         cursor: pointer;
+         transition: transform 0.2s, opacity 0.2s;
+         color: #fff;
+         text-decoration: none;
+      }
+
+      .share-btn:hover {
+         transform: translateY(-2px);
+         opacity: 0.9;
+      }
+
+      .share-btn.whatsapp {
+         background: #25D366;
+      }
+
+      .share-btn.instagram {
+         background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      }
+
+      .share-btn.facebook {
+         background: #1877F2;
+      }
+
+      .share-btn.copy {
+         background: #262626;
+         border: 1px solid #333;
+      }
+
+      .copy-notification {
+         position: fixed;
+         bottom: 24px;
+         left: 50%;
+         transform: translateX(-50%);
+         background: #25D366;
+         color: #fff;
+         padding: 12px 24px;
+         border-radius: 8px;
+         font-weight: 600;
+         animation: slideUp 0.3s ease;
+         z-index: 3000;
+      }
+
+      /* Work in Progress Section */
+      .wip-section {
+         padding: 40px 20px;
+         text-align: center;
+         border-top: 1px solid #262626;
+      }
+
+      .wip-content {
+         max-width: 600px;
+         margin: 0 auto;
+      }
+
+      .wip-text {
+         font-size: 14px;
+         color: #666;
+         font-style: italic;
+         letter-spacing: 0.5px;
+      }
+
+      /* Footer */
+      .footer {
+         padding: 40px 20px;
+         text-align: center;
+         border-top: 1px solid #262626;
+         margin-top: 40px;
+      }
+
+      .social-icons {
+         display: flex;
+         justify-content: center;
+         gap: 24px;
+         margin-bottom: 20px;
+      }
+
+      .social-icons i {
+         font-size: 24px;
+         color: #fff;
+         cursor: pointer;
+         transition: color 0.3s;
+      }
+
+      .social-icons i:hover {
+         color: #f09433;
+      }
+
+      .footer p {
+         font-size: 14px;
+         color: #a8a8a8;
+      }
+
+      .footer-small {
+         font-size: 12px;
+         color: #666;
+         margin-top: 8px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+         .contact-info {
+            flex-direction: column;
+            gap: 16px;
+         }
+
+         .modal-content {
+            max-width: 100%;
+         }
+
+         .share-buttons {
+            grid-template-columns: 1fr;
+         }
+      }
+
+      @media (max-width: 480px) {
+         .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div id="app">
+      <!-- Header -->
+      <header class="header">
+         <div class="brand-info">
+            <div class="brand-logo">IK</div>
+            <div class="brand-name">
+               <h1>IoannaKamp</h1>
+               <p>Handmade with love 🧶</p>
+            </div>
+         </div>
+         <a class="follow-btn" target="_blank" href="https://www.instagram.com/ioanna_kampouridou/">
+            <i class="fab fa-instagram"></i>
+            Follow
+         </a>
+      </header>
+
+      <!-- Bio Section -->
+      <div class="bio-section">
+         <h2>
+            ✨ Unique handmade knitted bags<br>
+            🎨 Each piece is one of a kind<br>
+            📦 Custom orders available<br>
+            💌 DM for inquiries
+         </h2>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="contact-section">
+         <div class="contact-info">
+            <div class="contact-item">
+               <i class="fas fa-envelope"></i>
+               <a href="mailto:info@ioannakamp.com">info@ioannakamp.com</a>
+            </div>
+            <div class="contact-item">
+               <i class="fas fa-phone"></i>
+               <a href="tel:+306909009055">6909009055</a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid">
+         <div v-for="product in products" :key="product.id" class="product-card" @click="openModal(product)">
+            <img v-if="product.type === 'image'" :src="product.src" :alt="product.alt">
+            <video v-else :src="product.src" loop muted playsinline autoplay>
+            </video>
+
+            <!-- Overlay -->
+            <div class="product-overlay">
+               <div class="overlay-actions">
+                  <button @click.stop="toggleLike(product.id)" class="like-btn"
+                     :class="{ liked: likedItems.has(product.id) }">
+                     <i class="fas fa-heart"></i>
+                  </button>
+                  <i class="fas fa-paper-plane send-icon" @click.stop="openShareModal(product)"></i>
+               </div>
+               <div class="product-color">{{ product.color }}</div>
+               <div class="size-badges">
+                  <span v-for="size in product.sizes" :key="size" class="size-badge">
+                     {{ size }}
+                  </span>
+               </div>
+            </div>
+
+            <!-- Video Badge -->
+            <div v-if="product.type === 'video'" class="video-badge">VIDEO</div>
+         </div>
+      </div>
+
+      <!-- Product Modal -->
+      <div v-if="selectedProduct" class="modal-overlay" @click="closeModal">
+         <div class="modal-content" @click.stop>
+            <button class="modal-close" @click="closeModal">
+               <i class="fas fa-times"></i>
+            </button>
+
+            <img v-if="selectedProduct.type === 'image'" :src="selectedProduct.src" :alt="selectedProduct.alt"
+               class="modal-media">
+            <video v-else :src="selectedProduct.src" class="modal-media" controls autoplay loop>
+            </video>
+
+            <div class="modal-info">
+               <div class="modal-header">
+                  <div>
+                     <h3 class="modal-title">{{ selectedProduct.alt }}</h3>
+                     <p class="modal-color">Color: {{ selectedProduct.color }}</p>
+                  </div>
+                  <div class="modal-actions">
+                     <button @click="toggleLike(selectedProduct.id)" class="modal-action-btn"
+                        :class="{ liked: likedItems.has(selectedProduct.id) }">
+                        <i class="fas fa-heart"
+                           :style="{ color: likedItems.has(selectedProduct.id) ? '#ff3040' : '#fff' }"></i>
+                     </button>
+                     <button @click="openShareModal(selectedProduct)" class="modal-action-btn">
+                        <i class="fas fa-paper-plane"></i>
+                     </button>
+                  </div>
+               </div>
+
+               <div class="modal-sizes">
+                  <span v-for="size in selectedProduct.sizes" :key="size" class="modal-size-badge">
+                     {{ size }}
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Share Modal -->
+      <div v-if="shareProduct" class="share-modal" @click="closeShareModal">
+         <div class="share-content" @click.stop>
+            <div class="share-header">
+               <h3 class="share-title">Share this bag</h3>
+               <button class="share-close" @click="closeShareModal">
+                  <i class="fas fa-times"></i>
+               </button>
+            </div>
+
+            <div class="share-message">
+               {{ shareMessage }}
+            </div>
+
+            <div class="share-buttons">
+               <a :href="whatsappShareUrl" target="_blank" class="share-btn whatsapp">
+                  <i class="fab fa-whatsapp"></i>
+                  WhatsApp
+               </a>
+               <a href="https://www.instagram.com/ioanna_kampouridou/" target="_blank" class="share-btn instagram">
+                  <i class="fab fa-instagram"></i>
+                  Instagram
+               </a>
+               <a :href="facebookShareUrl" target="_blank" class="share-btn facebook">
+                  <i class="fab fa-facebook"></i>
+                  Facebook
+               </a>
+               <button @click="copyToClipboard" class="share-btn copy">
+                  <i class="fas fa-copy"></i>
+                  Copy Text
+               </button>
+            </div>
+         </div>
+      </div>
+
+      <!-- Copy Notification -->
+      <div v-if="showCopyNotification" class="copy-notification">
+         <i class="fas fa-check"></i> Text copied to clipboard!
+      </div>
+
+      <!-- Work in Progress Section -->
+      <div class="wip-section">
+         <div class="wip-content">
+            <p class="wip-text">Demo preview • More collections coming soon</p>
+         </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+         <div class="social-icons">
+            <a href="https://www.instagram.com/ioanna_kampouridou" target="_blank">
+               <i class="fab fa-instagram"></i>
+            </a>
+            <i class="fas fa-shopping-bag"></i>
+            <a href="https://www.facebook.com/profile.php?id=100022053194044" target="_blank">
+               <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.tiktok.com/@ioanna_kampouridou" target="_blank">
+               <i class="fab fa-tiktok"></i>
+            </a>
+         </div>
+         <p>© 2026 IoannaKamp - Handmade Knitted Bags</p>
+         <p class="footer-small">Made with ❤️ in Greece</p>
+      </footer>
+   </div>
+
+   <script>
+      const { createApp } = Vue;
+
+      createApp({
+         data() {
+            return {
+               likedItems: new Set(),
+               selectedProduct: null,
+               shareProduct: null,
+               showCopyNotification: false,
+               products: [
+                  {
+                     id: 1,
+                     type: 'image',
+                     src: '../assets/beige_knitted_bag_1.jpg',
+                     alt: 'Beige Knitted Bag',
+                     color: 'Beige',
+                     sizes: ['Small', 'Medium', 'Large']
+                  },
+                  {
+                     id: 2,
+                     type: 'image',
+                     src: '../assets/black_knitted_bag_1.jpg',
+                     alt: 'Black Knitted Bag',
+                     color: 'Black',
+                     sizes: ['Small', 'Medium', 'Large']
+                  },
+                  {
+                     id: 3,
+                     type: 'video',
+                     src: '../assets/black_knitted_bag_1.mp4',
+                     alt: 'Black Knitted Bag Video',
+                     color: 'Black',
+                     sizes: ['Small', 'Medium', 'Large']
+                  },
+                  {
+                     id: 4,
+                     type: 'image',
+                     src: '../assets/cream_knitted_bag_1.jpg',
+                     alt: 'Cream Textured Bag',
+                     color: 'Cream',
+                     sizes: ['Small', 'Medium', 'Large']
+                  },
+                  {
+                     id: 5,
+                     type: 'image',
+                     src: '../assets/red_knitted_bag_1.jpg',
+                     alt: 'Red Knitted Bag',
+                     color: 'Red',
+                     sizes: ['Small', 'Medium']
+                  },
+                  {
+                     id: 6,
+                     type: 'video',
+                     src: '../assets/cream_knitted_bag_1.mp4',
+                     alt: 'Cream Knitted Bag Video',
+                     color: 'Cream',
+                     sizes: ['Small', 'Medium', 'Large']
+                  },
+                  {
+                     id: 7,
+                     type: 'image',
+                     src: '../assets/blue_knitted_bag_1.jpg',
+                     alt: 'Blue Knitted Bag',
+                     color: 'Blue',
+                     sizes: ['Medium', 'Large']
+                  },
+                  {
+                     id: 8,
+                     type: 'image',
+                     src: '../assets/brown_knitted_bag_1.jpg',
+                     alt: 'Brown Knitted Bag',
+                     color: 'Brown',
+                     sizes: ['Small', 'Medium', 'Large']
+                  },
+                  {
+                     id: 9,
+                     type: 'image',
+                     src: '../assets/grey_knitted_bag_1.jpg',
+                     alt: 'Grey Knitted Bag',
+                     color: 'Grey',
+                     sizes: ['Small', 'Medium', 'Large']
+                  }
+               ]
+            };
+         },
+         computed: {
+            shareMessage() {
+               if (!this.shareProduct) return '';
+               return `Check out this beautiful ${this.shareProduct.color} handmade knitted bag from IoannaKamp! 🧶✨
+
+Available sizes: ${this.shareProduct.sizes.join(', ')}
+
+Contact: 6909009055
+Email: info@ioannakamp.com
+Instagram: @ioanna_kampouridou`;
+            },
+            whatsappShareUrl() {
+               if (!this.shareProduct) return '';
+               const message = encodeURIComponent(this.shareMessage);
+               return `https://wa.me/?text=${message}`;
+            },
+            facebookShareUrl() {
+               const url = encodeURIComponent(window.location.href);
+               return `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            }
+         },
+         methods: {
+            toggleLike(id) {
+               if (this.likedItems.has(id)) {
+                  this.likedItems.delete(id);
+               }
+               else {
+                  this.likedItems.add(id);
+               }
+            },
+            openModal(product) {
+               this.selectedProduct = product;
+               document.body.style.overflow = 'hidden';
+            },
+            closeModal() {
+               this.selectedProduct = null;
+               document.body.style.overflow = 'auto';
+            },
+            openShareModal(product) {
+               this.shareProduct = product;
+            },
+            closeShareModal() {
+               this.shareProduct = null;
+            },
+            async copyToClipboard() {
+               try {
+                  await navigator.clipboard.writeText(this.shareMessage);
+                  this.showCopyNotification = true;
+                  setTimeout(() => {
+                     this.showCopyNotification = false;
+                  }, 3000);
+               } catch (err) {
+                  console.error('Failed to copy:', err);
+               }
+            }
+         },
+         mounted() {
+            // Close modal on ESC key
+            window.addEventListener('keydown', (e) => {
+               if (e.key === 'Escape') {
+                  this.closeModal();
+                  this.closeShareModal();
+               }
+            });
+         }
+      }).mount('#app');
+   </script>
+</body>
+
+</html>
