@@ -5,571 +5,653 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>IoannaKamp - Handmade Knitted Bags</title>
+
+   <!-- SEO Meta Tags -->
+   <meta name="description"
+      content="Unique handmade knitted bags by IoannaKamp. Each piece is one of a kind. Custom orders available. Shop beautiful handcrafted bags with gold and silver chain straps.">
+   <meta name="keywords"
+      content="handmade bags, knitted bags, crochet bags, handmade purses, custom bags, IoannaKamp, Greece, artisan bags">
+   <meta name="author" content="IoannaKamp">
+
+   <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
+   <meta property="og:title" content="IoannaKamp - Handmade Knitted Bags">
+   <meta property="og:description"
+      content="Unique handmade knitted bags. Each piece is one of a kind. Custom orders available.">
+   <meta property="og:image" content="https://zembi.github.io/iKamp/assets/beige_knitted_bag_1.jpg">
+   <meta property="og:url" content="https://zembi.github.io/iKamp/">
+   <meta property="og:type" content="website">
+   <meta property="og:site_name" content="IoannaKamp">
+
+   <!-- Twitter Card Meta Tags -->
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="IoannaKamp - Handmade Knitted Bags">
+   <meta name="twitter:description"
+      content="Unique handmade knitted bags. Each piece is one of a kind. Custom orders available.">
+   <meta name="twitter:image" content="https://zembi.github.io/iKamp/assets/beige_knitted_bag_1.jpg">
+
+   <!-- Additional Meta Tags -->
+   <meta name="robots" content="index, follow">
+   <meta name="language" content="Greek">
+   <meta name="geo.region" content="GR">
+   <meta name="geo.placename" content="Greece">
+
    <link rel="icon" type="image/png" href="./assets/ioanna_kamp_image_removed_bg.png">
+   <link rel="canonical" href="https://zembi.github.io/iKamp/">
+
    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <style>
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-      }
+</head>
 
-      body {
-         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         background-color: #000;
-         color: #fff;
-         min-height: 100vh;
-      }
+<style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+   }
 
-      /* Header */
-      .header {
-         position: sticky;
-         top: 0;
-         background-color: #000;
-         border-bottom: 1px solid #262626;
-         padding: 16px 20px;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         z-index: 100;
-      }
+   body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #000;
+      color: #fff;
+      min-height: 100vh;
+   }
 
-      .brand-info {
-         display: flex;
-         align-items: center;
-         gap: 12px;
-      }
+   /* Header */
+   .header {
+      position: sticky;
+      top: 0;
+      background-color: #000;
+      border-bottom: 1px solid #262626;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+   }
 
-      .brand-logo {
-         width: 40px;
-         height: 40px;
-         border-radius: 50%;
-         background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         font-weight: bold;
-         font-size: 20px;
-      }
+   .brand-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+   }
 
-      .brand-name h1 {
-         font-size: 20px;
-         font-weight: 600;
-         letter-spacing: 0.5px;
-      }
+   .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+   }
 
-      .brand-name p {
-         font-size: 12px;
-         color: #a8a8a8;
-      }
+   .brand-name h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+   }
 
-      .follow-btn {
-         background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-         color: #fff;
-         border: none;
-         padding: 8px 20px;
-         border-radius: 8px;
-         font-weight: 600;
-         font-size: 14px;
-         cursor: pointer;
-         display: flex;
-         text-decoration: none;
-         align-items: center;
-         gap: 6px;
-      }
+   .brand-name p {
+      font-size: 12px;
+      color: #a8a8a8;
+   }
 
-      /* Bio Section */
-      .bio-section {
-         padding: 24px 20px;
-         border-bottom: 1px solid #262626;
-      }
+   .follow-btn {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      text-decoration: none;
+      align-items: center;
+      gap: 6px;
+   }
 
-      .bio-section h2 {
-         font-size: 16px;
-         font-weight: 400;
-         line-height: 24px;
-      }
+   /* Bio Section */
+   .bio-section {
+      padding: 24px 20px;
+      border-bottom: 1px solid #262626;
+   }
 
-      /* Contact Section */
-      .contact-section {
-         padding: 20px;
-         background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-         border-bottom: 1px solid #262626;
-      }
+   .bio-section h2 {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+   }
 
-      .contact-info {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 24px;
-         justify-content: center;
-         align-items: center;
-      }
+   /* Contact Section */
+   .contact-section {
+      padding: 20px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-bottom: 1px solid #262626;
+   }
 
-      .contact-item {
-         display: flex;
-         align-items: center;
-         gap: 10px;
-         font-size: 15px;
-         color: #fff;
-      }
+   .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+   }
 
-      .contact-item i {
-         color: #f09433;
-         font-size: 18px;
-      }
+   .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: #fff;
+   }
 
-      .contact-item a {
-         color: #fff;
-         text-decoration: none;
-         transition: color 0.3s;
-      }
+   .contact-item i {
+      color: #f09433;
+      font-size: 18px;
+   }
 
-      .contact-item a:hover {
-         color: #f09433;
-      }
+   .contact-item a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+   }
 
-      /* Products Grid */
-      .products-grid {
-         display: grid;
-         grid-template-columns: repeat(3, 1fr);
-         gap: 3px;
-      }
+   .contact-item a:hover {
+      color: #f09433;
+   }
 
-      .product-card {
-         position: relative;
-         aspect-ratio: 1/1;
-         overflow: hidden;
-         cursor: pointer;
-         background-color: #1a1a1a;
-      }
+   /* Products Grid */
+   .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+   }
 
-      .product-card img,
-      .product-card video {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         transition: transform 0.3s ease;
-      }
+   .product-card {
+      position: relative;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      cursor: pointer;
+      background-color: #1a1a1a;
+   }
 
-      .product-card:hover img,
-      .product-card:hover video {
-         transform: scale(1.05);
-      }
+   .product-card img,
+   .product-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+   }
 
-      .product-overlay {
-         position: absolute;
-         inset: 0;
-         background-color: rgba(0, 0, 0, 0.4);
+   .product-card:hover img,
+   .product-card:hover video {
+      transform: scale(1.05);
+   }
+
+   .product-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+   }
+
+   .product-card:hover .product-overlay {
+      opacity: 1;
+   }
+
+   .overlay-actions {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+   }
+
+   .like-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-size: 32px;
+      transition: transform 0.2s;
+   }
+
+   .like-btn:hover {
+      transform: scale(1.1);
+   }
+
+   .like-btn.liked {
+      color: #ff3040;
+   }
+
+   .like-btn:not(.liked) {
+      color: #fff;
+   }
+
+   .send-icon {
+      font-size: 32px;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.2s;
+   }
+
+   .send-icon:hover {
+      transform: scale(1.1);
+   }
+
+   .product-color {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+   }
+
+   .color-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+   }
+
+   .strap-info {
+      font-size: 12px;
+      color: #d2d2d2;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 2px 5px;
+      margin-top: 4px;
+   }
+
+   .size-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+
+   .size-badge {
+      padding: 4px 12px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+   }
+
+   .video-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+   }
+
+   /* Modal */
+   .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+   }
+
+   @keyframes fadeIn {
+      from {
          opacity: 0;
-         transition: opacity 0.3s ease;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center;
-         gap: 8px;
       }
 
-      .product-card:hover .product-overlay {
+      to {
          opacity: 1;
       }
+   }
 
-      .overlay-actions {
-         display: flex;
-         gap: 20px;
-         align-items: center;
+   .modal-content {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #262626;
+      animation: slideUp 0.3s ease;
+   }
+
+   @keyframes slideUp {
+      from {
+         transform: translateY(50px);
+         opacity: 0;
       }
 
-      .like-btn {
-         background: none;
-         border: none;
-         cursor: pointer;
-         padding: 0;
-         font-size: 32px;
-         transition: transform 0.2s;
+      to {
+         transform: translateY(0);
+         opacity: 1;
       }
+   }
 
-      .like-btn:hover {
-         transform: scale(1.1);
-      }
+   .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      transition: background 0.3s;
+   }
 
-      .like-btn.liked {
-         color: #ff3040;
-      }
+   .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+   }
 
-      .like-btn:not(.liked) {
-         color: #fff;
-      }
+   .modal-media {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      background: #000;
+   }
 
-      .send-icon {
-         font-size: 32px;
-         color: #fff;
-         cursor: pointer;
-         transition: transform 0.2s;
-      }
+   .modal-info {
+      padding: 24px;
+      border-top: 1px solid #262626;
+   }
 
-      .send-icon:hover {
-         transform: scale(1.1);
-      }
+   .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+   }
 
-      .product-color {
-         font-size: 14px;
-         font-weight: 600;
-         margin-top: 8px;
-      }
+   .modal-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+   }
 
-      .size-badges {
-         display: flex;
-         gap: 8px;
-         flex-wrap: wrap;
-         justify-content: center;
-      }
+   .modal-color {
+      font-size: 16px;
+      color: #a8a8a8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+   }
 
-      .size-badge {
-         padding: 4px 12px;
-         background-color: rgba(255, 255, 255, 0.2);
-         border-radius: 12px;
-         font-size: 12px;
-         font-weight: 500;
-         backdrop-filter: blur(10px);
-      }
+   .modal-color-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+   }
 
-      .video-badge {
-         position: absolute;
-         top: 8px;
-         right: 8px;
-         background-color: rgba(0, 0, 0, 0.7);
-         padding: 4px 8px;
-         border-radius: 4px;
-         font-size: 11px;
-         font-weight: 600;
-         backdrop-filter: blur(10px);
-      }
+   .modal-strap {
+      font-size: 14px;
+      color: #a8a8a8;
+      margin-top: 4px;
+   }
 
-      /* Modal */
-      .modal-overlay {
-         position: fixed;
-         inset: 0;
-         background-color: rgba(0, 0, 0, 0.95);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         z-index: 1000;
-         padding: 20px;
-         animation: fadeIn 0.3s ease;
-      }
 
-      @keyframes fadeIn {
-         from {
-            opacity: 0;
-         }
+   .modal-actions {
+      display: flex;
+      gap: 12px;
+   }
 
-         to {
-            opacity: 1;
-         }
+   .modal-action-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.2s;
+   }
+
+   .modal-action-btn:hover {
+      transform: scale(1.1);
+   }
+
+   .modal-sizes {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+   }
+
+   .modal-size-badge {
+      padding: 8px 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid #262626;
+   }
+
+   /* Share Modal */
+   .share-modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+   }
+
+   .share-content {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 500px;
+      width: 100%;
+      border: 1px solid #262626;
+      animation: slideUp 0.3s ease;
+   }
+
+   .share-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+   }
+
+   .share-title {
+      font-size: 20px;
+      font-weight: 600;
+   }
+
+   .share-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+   }
+
+   .share-message {
+      background: #262626;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 1.6;
+      border: 1px solid #333;
+      white-space: pre-wrap;
+   }
+
+   .share-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+   }
+
+   .share-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+      color: #fff;
+      text-decoration: none;
+   }
+
+   .share-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+   }
+
+   .share-btn.whatsapp {
+      background: #25D366;
+   }
+
+   .share-btn.instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+   }
+
+   .share-btn.facebook {
+      background: #1877F2;
+   }
+
+   .share-btn.copy {
+      background: #262626;
+      border: 1px solid #333;
+   }
+
+   .copy-notification {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #25D366;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      animation: slideUp 0.3s ease;
+      z-index: 3000;
+   }
+
+   /* Work in Progress Section */
+   .wip-section {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #262626;
+   }
+
+   .wip-content {
+      max-width: 600px;
+      margin: 0 auto;
+   }
+
+   .wip-text {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+      letter-spacing: 0.5px;
+   }
+
+   /* Footer */
+   .footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #262626;
+      margin-top: 40px;
+   }
+
+   .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+   }
+
+   .social-icons i {
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s;
+   }
+
+   .social-icons i:hover {
+      color: #f09433;
+   }
+
+   .footer p {
+      font-size: 14px;
+      color: #a8a8a8;
+   }
+
+   .footer-small {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+   }
+
+   /* Responsive */
+   @media (max-width: 768px) {
+      .contact-info {
+         flex-direction: column;
+         gap: 16px;
       }
 
       .modal-content {
-         position: relative;
-         max-width: 900px;
-         width: 100%;
-         background: #000;
-         border-radius: 12px;
-         overflow: hidden;
-         border: 1px solid #262626;
-         animation: slideUp 0.3s ease;
-      }
-
-      @keyframes slideUp {
-         from {
-            transform: translateY(50px);
-            opacity: 0;
-         }
-
-         to {
-            transform: translateY(0);
-            opacity: 1;
-         }
-      }
-
-      .modal-close {
-         position: absolute;
-         top: 16px;
-         right: 16px;
-         background: rgba(0, 0, 0, 0.7);
-         border: none;
-         color: #fff;
-         font-size: 24px;
-         cursor: pointer;
-         width: 40px;
-         height: 40px;
-         border-radius: 50%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         z-index: 10;
-         backdrop-filter: blur(10px);
-         transition: background 0.3s;
-      }
-
-      .modal-close:hover {
-         background: rgba(255, 255, 255, 0.2);
-      }
-
-      .modal-media {
-         width: 100%;
-         max-height: 70vh;
-         object-fit: contain;
-         background: #000;
-      }
-
-      .modal-info {
-         padding: 24px;
-         border-top: 1px solid #262626;
-      }
-
-      .modal-header {
-         display: flex;
-         justify-content: space-between;
-         align-items: flex-start;
-         margin-bottom: 16px;
-      }
-
-      .modal-title {
-         font-size: 20px;
-         font-weight: 600;
-         color: #fff;
-         margin-bottom: 8px;
-      }
-
-      .modal-color {
-         font-size: 16px;
-         color: #a8a8a8;
-      }
-
-      .modal-actions {
-         display: flex;
-         gap: 12px;
-      }
-
-      .modal-action-btn {
-         background: none;
-         border: none;
-         color: #fff;
-         font-size: 24px;
-         cursor: pointer;
-         transition: transform 0.2s;
-      }
-
-      .modal-action-btn:hover {
-         transform: scale(1.1);
-      }
-
-      .modal-sizes {
-         display: flex;
-         gap: 12px;
-         margin-top: 16px;
-      }
-
-      .modal-size-badge {
-         padding: 8px 16px;
-         background-color: rgba(255, 255, 255, 0.1);
-         border-radius: 16px;
-         font-size: 14px;
-         font-weight: 500;
-         border: 1px solid #262626;
-      }
-
-      /* Share Modal */
-      .share-modal {
-         position: fixed;
-         inset: 0;
-         background-color: rgba(0, 0, 0, 0.9);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         z-index: 2000;
-         padding: 20px;
-         animation: fadeIn 0.3s ease;
-      }
-
-      .share-content {
-         background: #1a1a1a;
-         border-radius: 16px;
-         padding: 32px;
-         max-width: 500px;
-         width: 100%;
-         border: 1px solid #262626;
-         animation: slideUp 0.3s ease;
-      }
-
-      .share-header {
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         margin-bottom: 24px;
-      }
-
-      .share-title {
-         font-size: 20px;
-         font-weight: 600;
-      }
-
-      .share-close {
-         background: none;
-         border: none;
-         color: #fff;
-         font-size: 24px;
-         cursor: pointer;
-      }
-
-      .share-message {
-         background: #262626;
-         border-radius: 12px;
-         padding: 16px;
-         margin-bottom: 24px;
-         font-size: 14px;
-         line-height: 1.6;
-         border: 1px solid #333;
-         white-space: pre-wrap;
+         max-width: 100%;
       }
 
       .share-buttons {
-         display: grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap: 12px;
+         grid-template-columns: 1fr;
       }
 
-      .share-btn {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         gap: 10px;
-         padding: 14px;
-         border-radius: 10px;
-         border: none;
-         font-size: 15px;
-         font-weight: 600;
-         cursor: pointer;
-         transition: transform 0.2s, opacity 0.2s;
-         color: #fff;
-         text-decoration: none;
+      .product-overlay {
+         padding: 5px;
       }
 
-      .share-btn:hover {
-         transform: translateY(-2px);
-         opacity: 0.9;
-      }
-
-      .share-btn.whatsapp {
-         background: #25D366;
-      }
-
-      .share-btn.instagram {
-         background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      }
-
-      .share-btn.facebook {
-         background: #1877F2;
-      }
-
-      .share-btn.copy {
-         background: #262626;
-         border: 1px solid #333;
-      }
-
-      .copy-notification {
-         position: fixed;
-         bottom: 24px;
-         left: 50%;
-         transform: translateX(-50%);
-         background: #25D366;
-         color: #fff;
-         padding: 12px 24px;
-         border-radius: 8px;
-         font-weight: 600;
-         animation: slideUp 0.3s ease;
-         z-index: 3000;
-      }
-
-      /* Work in Progress Section */
-      .wip-section {
-         padding: 40px 20px;
-         text-align: center;
-         border-top: 1px solid #262626;
-      }
-
-      .wip-content {
-         max-width: 600px;
-         margin: 0 auto;
-      }
-
-      .wip-text {
-         font-size: 14px;
-         color: #666;
-         font-style: italic;
-         letter-spacing: 0.5px;
-      }
-
-      /* Footer */
-      .footer {
-         padding: 40px 20px;
-         text-align: center;
-         border-top: 1px solid #262626;
-         margin-top: 40px;
-      }
-
-      .social-icons {
-         display: flex;
-         justify-content: center;
-         gap: 24px;
-         margin-bottom: 20px;
-      }
-
-      .social-icons i {
+      .like-btn,
+      .send-icon {
          font-size: 24px;
-         color: #fff;
-         cursor: pointer;
-         transition: color 0.3s;
       }
+   }
 
-      .social-icons i:hover {
-         color: #f09433;
+   @media (max-width: 480px) {
+      .products-grid {
+         grid-template-columns: repeat(2, 1fr);
       }
-
-      .footer p {
-         font-size: 14px;
-         color: #a8a8a8;
-      }
-
-      .footer-small {
-         font-size: 12px;
-         color: #666;
-         margin-top: 8px;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-         .contact-info {
-            flex-direction: column;
-            gap: 16px;
-         }
-
-         .modal-content {
-            max-width: 100%;
-         }
-
-         .share-buttons {
-            grid-template-columns: 1fr;
-         }
-      }
-
-      @media (max-width: 480px) {
-         .products-grid {
-            grid-template-columns: repeat(2, 1fr);
-         }
-      }
-   </style>
+   }
+</style>
 </head>
 
 <body>
@@ -608,7 +690,7 @@
             </div>
             <div class="contact-item">
                <i class="fas fa-phone"></i>
-               <a href="tel:+306909009055">6909009055</a>
+               <a href="tel:+306909009055">+30 6909009055</a>
             </div>
          </div>
       </div>
@@ -629,7 +711,11 @@
                   </button>
                   <i class="fas fa-paper-plane send-icon" @click.stop="openShareModal(product)"></i>
                </div>
-               <div class="product-color">{{ product.color }}</div>
+               <div class="product-color">
+                  {{ product.color }}
+                  <span class="color-swatch" :style="{ backgroundColor: product.hexColor }"></span>
+               </div>
+               <div class="strap-info">{{ product.strapType }}</div>
                <div class="size-badges">
                   <span v-for="size in product.sizes" :key="size" class="size-badge">
                      {{ size }}
@@ -658,7 +744,11 @@
                <div class="modal-header">
                   <div>
                      <h3 class="modal-title">{{ selectedProduct.alt }}</h3>
-                     <p class="modal-color">Color: {{ selectedProduct.color }}</p>
+                     <p class="modal-color">
+                        Color: {{ selectedProduct.color }}
+                        <span class="modal-color-swatch" :style="{ backgroundColor: selectedProduct.hexColor }"></span>
+                     </p>
+                     <p class="modal-strap">Strap: {{ selectedProduct.strapType }}</p>
                   </div>
                   <div class="modal-actions">
                      <button @click="toggleLike(selectedProduct.id)" class="modal-action-btn"
@@ -761,74 +851,92 @@
                   {
                      id: 1,
                      type: 'image',
-                     src: './assets/beige_knitted_bag_1.jpg',
+                     src: '../assets/beige_knitted_bag_1.jpg',
                      alt: 'Beige Knitted Bag',
                      color: 'Beige',
-                     sizes: ['Small', 'Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#D4C5B0",
+                     strapType: "Gold Chain"
                   },
                   {
                      id: 2,
                      type: 'image',
-                     src: './assets/black_knitted_bag_1.jpg',
+                     src: '../assets/black_knitted_bag_1.jpg',
                      alt: 'Black Knitted Bag',
                      color: 'Black',
-                     sizes: ['Small', 'Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#1a1a1a",
+                     strapType: "Gold Chain"
                   },
                   {
                      id: 3,
                      type: 'video',
-                     src: './assets/black_knitted_bag_1.mp4',
+                     src: '../assets/black_knitted_bag_1.mp4',
                      alt: 'Black Knitted Bag Video',
                      color: 'Black',
-                     sizes: ['Small', 'Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#1a1a1a",
+                     strapType: "Gold Chain"
                   },
                   {
                      id: 4,
                      type: 'image',
-                     src: './assets/cream_knitted_bag_1.jpg',
+                     src: '../assets/cream_knitted_bag_1.jpg',
                      alt: 'Cream Textured Bag',
                      color: 'Cream',
-                     sizes: ['Small', 'Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#F5F5DC",
+                     strapType: "Silver Chain"
                   },
                   {
                      id: 5,
                      type: 'image',
-                     src: './assets/red_knitted_bag_1.jpg',
+                     src: '../assets/red_knitted_bag_1.jpg',
                      alt: 'Red Knitted Bag',
                      color: 'Red',
-                     sizes: ['Small', 'Medium']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#8B0000",
+                     strapType: "No Strap"
                   },
                   {
                      id: 6,
                      type: 'video',
-                     src: './assets/cream_knitted_bag_1.mp4',
+                     src: '../assets/cream_knitted_bag_1.mp4',
                      alt: 'Cream Knitted Bag Video',
                      color: 'Cream',
-                     sizes: ['Small', 'Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#F5F5DC",
+                     strapType: "Silver Chain"
                   },
                   {
                      id: 7,
                      type: 'image',
-                     src: './assets/blue_knitted_bag_1.jpg',
+                     src: '../assets/blue_knitted_bag_1.jpg',
                      alt: 'Blue Knitted Bag',
                      color: 'Blue',
-                     sizes: ['Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#21567C",
+                     strapType: "Gold Chain"
                   },
                   {
                      id: 8,
                      type: 'image',
-                     src: './assets/brown_knitted_bag_1.jpg',
+                     src: '../assets/brown_knitted_bag_1.jpg',
                      alt: 'Brown Knitted Bag',
                      color: 'Brown',
-                     sizes: ['Small', 'Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#8B4513",
+                     strapType: "Gold Chain"
                   },
                   {
                      id: 9,
                      type: 'image',
-                     src: './assets/grey_knitted_bag_1.jpg',
+                     src: '../assets/grey_knitted_bag_1.jpg',
                      alt: 'Grey Knitted Bag',
                      color: 'Grey',
-                     sizes: ['Small', 'Medium', 'Large']
+                     sizes: ['Small', 'Medium', 'Large'],
+                     hexColor: "#808080",
+                     strapType: "Silver Chain"
                   }
                ]
             };
@@ -838,9 +946,11 @@
                if (!this.shareProduct) return '';
                return `Check out this beautiful ${this.shareProduct.color} handmade knitted bag from IoannaKamp! 🧶✨
 
+Color: ${this.shareProduct.color}
+Strap: ${this.shareProduct.strapType}
 Available sizes: ${this.shareProduct.sizes.join(', ')}
 
-Contact: 6909009055
+Contact: +30 6909009055
 Email: info@ioannakamp.com
 Instagram: @ioanna_kampouridou`;
             },
